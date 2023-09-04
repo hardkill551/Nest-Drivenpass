@@ -4,14 +4,15 @@ import { IsDate, IsNumber, IsString, Contains } from "class-validator"
 export class CardsDto{
     @IsString()
     name:string
-    @IsNumber()
-    cardNumber:number
+    
     @IsString()
     printedName:string
     @IsNumber()
     securityCode:number
     @IsDate()
     expirationDate:Date
+    @IsNumber()
+    cardNumber: number;
     @IsString()
     password:string
     @IsString()

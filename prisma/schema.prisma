@@ -31,12 +31,13 @@ model Cards {
   securityCode Int
   expirationDate DateTime
   password String
-  category CategoryCard
-  type TypeCard
-  
+  category String
+  type String
+
   @@unique([userId, name])
   @@map("cards")
 }
+
 model Credentials {
   id Int @id @default(autoincrement())
   name String
