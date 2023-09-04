@@ -40,4 +40,13 @@ export class AuthService {
         const password = bcrypt.hashSync(signUpUserDto.password, 10)
         return this.usersService.create({...signUpUserDto, password})
     }
+
+    checkToken(token: string) {
+        const data = this.jwtService.verify(token, {
+          audience: this.AUDIENCE,
+          issuer: this.ISSUER
+        });
+    
+        return data;
+      }
 }
