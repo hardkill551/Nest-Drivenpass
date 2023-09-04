@@ -1,17 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { NotesDto } from './dto/notes.dto';
-import Cryptr from 'cryptr';
 
 @Injectable()
 export class NotesRepository {
-   
-    private cryptr: Cryptr
-
-    constructor(private readonly prisma:PrismaService){
-        const Cryptr = require('cryptr');
-        this.cryptr = new Cryptr(process.env.JWT_SECRET)
-    }
+    constructor(private readonly prisma:PrismaService){}
     
     create(body:NotesDto, userId:number){
 
