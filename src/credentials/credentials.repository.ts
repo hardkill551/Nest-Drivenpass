@@ -5,6 +5,7 @@ import Cryptr from 'cryptr';
 
 @Injectable()
 export class CredentialsRepository {
+   
     private cryptr: Cryptr
 
     constructor(private readonly prisma:PrismaService){
@@ -42,5 +43,13 @@ export class CredentialsRepository {
                 userId
             }
         })
+    }
+
+    deleteCredentialsById(id: number) {
+        return this.prisma.credentials.delete({
+            where:{
+                id
+            }
+        })    
     }
 }

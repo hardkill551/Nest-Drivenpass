@@ -30,4 +30,10 @@ export class CredentialsService {
         if(credentials.userId !== user.id) throw new ForbiddenException("Forbidden")
         return {...credentials, password:this.cryptr.decrypt(credentials.password)}
     }
+    async deleteCredentialsById(user:User, id:number){
+        const credentials = await this.credentialsRepository.getCredentialsById(id)
+        if(!credentials) throw new NotFoundException("Not Found Credential")
+        if(credentials.userId !== user.id) throw new ForbiddenException("Forbidden")
+        return this.credentialsRepository.deleteCredentialsById(id)
+    }
 }

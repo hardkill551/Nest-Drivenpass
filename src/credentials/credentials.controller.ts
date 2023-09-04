@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { User as UserPrisma } from '@prisma/client';
 import { User } from 'src/decorators/user.decorator';
 import { AuthGuard } from 'src/guard/auth.guard';
@@ -25,6 +25,11 @@ export class CredentialsController {
     @Post()
     postCredentials(@Body() credentialDto: CredentialsDto, @User() user: UserPrisma){
         return this.credentialsService.create(credentialDto, user)
+    }
+    @Delete(":id")
+    deleteCredential(@Param("id") id:string, @User() user: UserPrisma){
+        return this.credentialsService.deleteCredentialsById(user, +id)
+
     }
 }
 
