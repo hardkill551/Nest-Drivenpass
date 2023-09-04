@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { SignUpUserDto } from 'src/auth/dto/auth.dto';
 import { UsersRepository } from './users.repository';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class UsersService {
@@ -16,5 +17,8 @@ export class UsersService {
     }
     create(signUpUser: SignUpUserDto) {
         return this.usersRepository.create(signUpUser)
+    }
+    deleteAccount(user:User){
+        
     }
 }
