@@ -18,7 +18,7 @@ export class UsersService {
     create(signUpUser: SignUpUserDto) {
         return this.usersRepository.create(signUpUser)
     }
-    deleteAccount(user:User){
-        
+    deleteAccount(user:User, password:string){
+        console.log(user)
     }
 }
