@@ -33,7 +33,8 @@ model Cards {
   password String
   category CategoryCard
   type TypeCard
-
+  
+  @@unique([userId, name])
   @@map("cards")
 }
 model Credentials {
